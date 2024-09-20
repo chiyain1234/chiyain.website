@@ -1,0 +1,150 @@
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;  /* 変更したフォント名 */
+    overflow: hidden;
+    color: white;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+#background {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    transform: translate(-50%, -50%);
+    filter: blur(5px);
+    z-index: -1;
+}
+
+header {
+    text-align: center;
+    padding: 0.2rem 0; /* ここを調整 */
+    background: rgba(0, 0, 0, 0.5);
+    transform: translateY(-50px);
+    opacity: 0;
+    animation: slideDown 1.2s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes slideDown {
+    0% { opacity: 0; transform: translateY(-100px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+section {
+    position: relative;
+    z-index: 10;
+    padding: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 40px;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1.5s ease-out forwards;
+    animation-delay: 1s;
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(50px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+section h2 { color: #f5dc00; margin-bottom: 1rem; }
+p, li { color: #ffffff; }
+ul { list-style: none; padding-left: 0; }
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
+    z-index: 1; /* 他の要素より上に表示 */
+}
+
+.profile-info::before {
+    content: '';
+    position: absolute;
+    top: -10px; /* 調整 */
+    left: -10px; /* 調整 */
+    right: -10px; /* 調整 */
+    bottom: -10px; /* 調整 */
+    border-radius: 50px; /* 角を丸める */
+    background: rgba(255, 255, 255, 0.1);
+    z-index: -1; /* 背景として配置 */
+    animation: glow 1.5s infinite alternate; /* アニメーションを追加 */
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 1px #ffffff, 0 0 2px #ffffff, 0 0 3px #ffffff;
+    }
+    100% {
+        box-shadow: 0 0 2px #ffffff, 0 0 3px #ffffff, 0 0 4px #ffffff;
+    }
+}
+
+.typing-effect {
+    display: none; /* 初期状態では非表示 */
+}
+
+.typing-effect::after {
+    content: '|'; /* カーソルの表示 */
+    animation: blink 0.7s step-end infinite; /* ちらつくアニメーション */
+    margin-left: 2px; /* テキストとの間隔 */
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #e4ad75;
+}
+
+.social-links a {
+    color: #69e6ff;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+.social-links a:hover {
+    text-decoration: underline;
+}
+
+.discord-status {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: #e9d14a;
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
